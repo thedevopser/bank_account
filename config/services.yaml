@@ -20,5 +20,14 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Account\Infrastructure\Doctrine\AccountRepository:
+        arguments:
+            $registry: '@doctrine'
+            $entityManager: '@doctrine.orm.default_entity_manager'
+
+    App\Account\Infrastructure\Doctrine\TransactionRepository:
+        arguments:
+            $registry: '@doctrine'
+            $entityManager: '@doctrine.orm.default_entity_manager'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
