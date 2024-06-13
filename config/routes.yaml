@@ -1,5 +1,5 @@
-controllers:
+account:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Account/Presenter/Controllers
+        namespace: App\Account\Presenter\Controllers
     type: attribute
