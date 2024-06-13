@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-4">Create Account</h1>
+
+        {{ form_start(form) }}
+        <div class="mb-4">
+            {{ form_label(form.initialBalance, 'Initial Balance', {'label_attr': {'class': 'block text-gray-700'}}) }}
+            {{ form_widget(form.initialBalance, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+            {{ form_errors(form.initialBalance) }}
+        </div>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

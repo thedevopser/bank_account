@@ -54,4 +54,24 @@ class TransactionRepository extends ServiceEntityRepository
         $this->entityManager->remove($transaction);
         $this->entityManager->flush();
     }
+
+    /**
+     * @param Uuid $accountId
+     * @param \DateTime $until
+     * @return Transaction[]
+     */
+    public function findPastByAccountId(Uuid $accountId, \DateTime $until): array
+    {
+        /** @var Transaction[] $result */
+        $result =$this->createQueryBuilder('t')
+            ->andWhere('t.account = :accountId')
+            ->andWhere('t.date <= :until')
+            ->setParameter('accountId', $accountId)
+            ->setParameter('until', $until)
+            ->orderBy('t.date', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
 }
